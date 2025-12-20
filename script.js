@@ -13,3 +13,22 @@ if (noBtn) {
     noBtn.style.top = randomY + "px";
   });
 }
+function showHearts() {
+  const container = document.body; // hearts float anywhere on screen
+  for (let i = 0; i < 8; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = (Math.random() * window.innerWidth) + "px";
+    heart.style.top = (window.innerHeight - 100) + "px";
+    container.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 2000);
+  }
+}
+
+// Example: trigger when envelope is hovered
+document.querySelector(".envelope").addEventListener("mouseenter", showHearts);
+
+// Or trigger when a button is clicked
+// document.querySelector("button").addEventListener("click", showHearts);
