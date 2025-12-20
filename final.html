@@ -19,18 +19,49 @@
           I remember the first time we talked, and how instantly I felt connected to you. Since then, every day has been a beautiful chapter in our story. You’ve shown me what true love feels like, and I’m endlessly grateful.<br><br>
           Even when things get tough, I know we’ll get through it together. You’re my strength, my peace, and my joy. I promise to always be here for you, to support you, and to love you with all my heart.<br><br>
           I dream of a future where we chase our goals side by side, laugh until we cry, and build a life full of warmth and adventure. You inspire me to be better, and I want to grow with you every step of the way.<br><br>
+          So here’s my heart, wrapped in this little letter. I love you more than words can say — and I always will. ❤️ My love, I just want you to know how much you mean to me. Every moment with you feels like magic. Your smile, your laugh, your kindness — they light up my world in ways I never imagined.<br><br>
+          I remember the first time we talked, and how instantly I felt connected to you. Since then, every day has been a beautiful chapter in our story. You’ve shown me what true love feels like, and I’m endlessly grateful.<br><br>
+          Even when things get tough, I know we’ll get through it together. You’re my strength, my peace, and my joy. I promise to always be here for you, to support you, and to love you with all my heart.<br><br>
+          I dream of a future where we chase our goals side by side, laugh until we cry, and build a life full of warmth and adventure. You inspire me to be better, and I want to grow with you every step of the way.<br><br>
+          So here’s my heart, wrapped in this little letter. I love you more than words can say — and I always will. ❤️ My love, I just want you to know how much you mean to me. Every moment with you feels like magic. Your smile, your laugh, your kindness — they light up my world in ways I never imagined.<br><br>
+          I remember the first time we talked, and how instantly I felt connected to you. Since then, every day has been a beautiful chapter in our story. You’ve shown me what true love feels like, and I’m endlessly grateful.<br><br>
+          Even when things get tough, I know we’ll get through it together. You’re my strength, my peace, and my joy. I promise to always be here for you, to support you, and to love you with all my heart.<br><br>
+          I dream of a future where we chase our goals side by side, laugh until we cry, and build a life full of warmth and adventure. You inspire me to be better, and I want to grow with you every step of the way.<br><br>
           So here’s my heart, wrapped in this little letter. I love you more than words can say — and I always will. ❤️
         </p>
       </div>
     </div>
   </div>
 
-  <script src="script.js"></script>
   <script>
-    // Back button functionality
+    // Back button functionality: go to index.html
     const backBtn = document.getElementById("backBtn");
     backBtn.addEventListener("click", () => {
-      window.history.back(); // goes to the previous page
+      window.location.href = "index.html";
+    });
+
+    // Envelope click: open and toggle letter scroll
+    const envelope = document.querySelector(".envelope");
+    envelope.addEventListener("click", () => {
+      envelope.classList.toggle("open");
+
+      // Optional: add floating hearts
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.textContent = "❤️";
+
+        const rect = envelope.getBoundingClientRect();
+        const x = Math.random() * (rect.width - 24);
+        const y = Math.random() * (rect.height - 24);
+
+        heart.style.left = `${rect.left + x}px`;
+        heart.style.top = `${rect.top + y}px`;
+
+        document.body.appendChild(heart);
+
+        heart.addEventListener("animationend", () => heart.remove());
+      }
     });
   </script>
 </body>

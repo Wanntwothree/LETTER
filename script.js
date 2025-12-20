@@ -27,17 +27,16 @@ if (noBtn) {
 // ENVELOPE CLICK TO OPEN / CLOSE + HEARTS
 // ========================
 const envelope = document.querySelector(".envelope");
-const loveMessage = document.getElementById("loveMessage");
+const letter = document.querySelector(".letter");
 
 envelope.addEventListener("click", (event) => {
-  event.stopPropagation();
+  // Only toggle open if user clicks outside the letter
+  if (!letter.contains(event.target)) {
+    envelope.classList.toggle("open");
+  }
 
-  if (!envelope.classList.contains("open")) {
-    // Open the envelope
-    envelope.classList.add("open");
-    loveMessage.style.display = "block";
-
-    // Generate hearts
+  // Generate hearts when opening
+  if (envelope.classList.contains("open")) {
     const rect = envelope.getBoundingClientRect();
     for (let i = 0; i < 30; i++) {
       const heart = document.createElement("div");
@@ -54,10 +53,5 @@ envelope.addEventListener("click", (event) => {
 
       heart.addEventListener("animationend", () => heart.remove());
     }
-
-  } else {
-    // Close the envelope
-    envelope.classList.remove("open");
-    loveMessage.style.display = "none";
   }
 });
