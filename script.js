@@ -26,10 +26,10 @@ function showHearts() {
   }
 }
 
-// Trigger when envelope is hovered (flap opens)
 document.addEventListener("DOMContentLoaded", () => {
   const envelope = document.querySelector(".envelope");
   if (envelope) {
     envelope.addEventListener("mouseenter", showHearts);
   }
 });
+
