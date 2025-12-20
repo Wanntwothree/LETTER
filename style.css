@@ -92,3 +92,40 @@ body {
   0% { transform: translateY(0) scale(1); opacity: 1; }
   100% { transform: translateY(-120px) scale(1.5); opacity: 0; }
 }
+button {
+  min-width: 140px;
+  padding: 14px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #FDACAC, #FD7979);
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #FD7979, #FDACAC);
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* Optional heartbeat animation */
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.1); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+button.heartbeat:hover {
+  animation: heartbeat 0.8s infinite;
+}
+
