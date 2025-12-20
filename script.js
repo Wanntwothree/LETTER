@@ -1,35 +1,63 @@
-const noBtn = document.getElementById("nobtn");
-
+// ========================
+// NO BUTTON TELEPORT
+// ========================
+const noBtn = document.getElementById("noBtn");
 if (noBtn) {
-  noBtn.addEventListener("click", () => {
-    const maxWidth = window.innerWidth - noBtn.offsetWidth;
-    const maxHeight = window.innerHeight - noBtn.offsetHeight;
+  function teleportNo() {
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
 
-    const randomX = Math.floor(Math.random() * maxWidth);
-    const randomY = Math.floor(Math.random() * maxHeight);
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
 
-    noBtn.style.position = "absolute";
-    noBtn.style.left = randomX + "px";
-    noBtn.style.top = randomY + "px";
-  });
-}
-function showHearts() {
-  const container = document.getElementById("hearts-container");
-  for (let i = 0; i < 12; i++) {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = (Math.random() * window.innerWidth) + "px";
-    heart.style.top = (window.innerHeight - 100) + "px";
-    container.appendChild(heart);
-    setTimeout(() => heart.remove(), 2000);
+    const randomX = Math.random() * (viewportWidth - btnWidth);
+    const randomY = Math.random() * (viewportHeight - btnHeight);
+
+    noBtn.style.position = 'fixed';
+    noBtn.style.left = `${randomX}px`;
+    noBtn.style.top = `${randomY}px`;
+    noBtn.style.zIndex = 1000;
   }
+
+  noBtn.addEventListener("click", teleportNo);
+  noBtn.addEventListener("touchstart", teleportNo);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const envelope = document.querySelector(".envelope");
-  if (envelope) {
-    envelope.addEventListener("mouseenter", showHearts);
+// ========================
+// ENVELOPE CLICK TO OPEN / CLOSE + HEARTS
+// ========================
+const envelope = document.querySelector(".envelope");
+const loveMessage = document.getElementById("loveMessage");
+
+envelope.addEventListener("click", (event) => {
+  event.stopPropagation();
+
+  if (!envelope.classList.contains("open")) {
+    // Open the envelope
+    envelope.classList.add("open");
+    loveMessage.style.display = "block";
+
+    // Generate hearts
+    const rect = envelope.getBoundingClientRect();
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.textContent = "❤️";
+
+      const x = Math.random() * (rect.width - 24);
+      const y = Math.random() * (rect.height - 24);
+
+      heart.style.left = `${rect.left + x}px`;
+      heart.style.top = `${rect.top + y}px`;
+
+      document.body.appendChild(heart);
+
+      heart.addEventListener("animationend", () => heart.remove());
+    }
+
+  } else {
+    // Close the envelope
+    envelope.classList.remove("open");
+    loveMessage.style.display = "none";
   }
 });
-
