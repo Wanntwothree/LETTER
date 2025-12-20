@@ -5,6 +5,22 @@
   <title>I Love You More Too</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Ensure play-area is column and buttons are centered */
+    .play-area {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    /* Fix button width */
+    .play-area .primary-btn {
+      width: 200px;
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
@@ -24,8 +40,9 @@
       Click the button below hehe
     </h2>
 
-    <!-- Button -->
+    <!-- Play area with buttons -->
     <div class="play-area">
+      <!-- Button to final message -->
       <button
         class="primary-btn"
         onclick="window.location.href='final.html'"
@@ -33,7 +50,18 @@
       >
         Click Here 💌
       </button>
+
+      <!-- Back button below -->
+      <button id="backBtn" class="primary-btn">⬅ Back</button>
     </div>
   </div>
+
+  <script>
+    // Back button functionality: go to index.html
+    const backBtn = document.getElementById("backBtn");
+    backBtn.addEventListener("click", () => {
+      window.location.href = "index.html";
+    });
+  </script>
 </body>
 </html>

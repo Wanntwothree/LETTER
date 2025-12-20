@@ -199,3 +199,14 @@ html, body {
 .envelope .flap {
   pointer-events: none; /* allows clicking envelope */
 }
+#backBtn {
+  display: block;
+  margin: 20px auto; /* centers the button horizontally above the envelope */
+  font-size: 1rem;
+  padding: 10px 20px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+
+
